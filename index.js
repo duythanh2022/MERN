@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGOOSE_DB_CONNECTION,{
     console.error(error);
 })
 app.use('/api/auth',authRouter)
-app.use('/api/post',productRouter)
+app.use('/api',productRouter)
 app.listen(PORT,()=>{
     console.log(`Serving on port ${PORT}`);
 })

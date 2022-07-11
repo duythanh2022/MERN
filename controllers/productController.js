@@ -18,8 +18,22 @@ const productCtrl = {
             await newProduct.save()
             res.status(200).json({success: true, message:"post success ",product:newProduct})
         } catch (error) {
-            
+            console.log(error)
+            res.status(500).json({success:false, message:"Internal server Error"})
         }
+    },
+    editProduct: async (req,res) =>{
+        try {
+            const {id} = req.param 
+            const product = await Product.findByIdAndUpdate(id,req.body,{runValidators:true,new:true})
+            await product.save()
+            res.status(200).json({success:true,message:"success update product"})
+            console.log("data",data)
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({success:false, message:"update faild"})
+        }
+    
     }
 }
 module.exports = productCtrl
