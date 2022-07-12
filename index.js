@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const authRouter = require('./routers/auth');
 const bodyparser = require('body-parser');
 const productRouter = require('./routers/product')
+const userRouter = require('./routers/user')
 const PORT = process.env.PORT || 5000;
 dotenv.config()
 app.use(bodyparser.json());
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGOOSE_DB_CONNECTION,{
 })
 app.use('/api/auth',authRouter)
 app.use('/api',productRouter)
+app.use('/api',userRouter)
 app.listen(PORT,()=>{
     console.log(`Serving on port ${PORT}`);
 })
